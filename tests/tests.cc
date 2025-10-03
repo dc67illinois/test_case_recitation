@@ -74,3 +74,20 @@ TEST_CASE("Example: Print Prompt Ledger", "[ex-3]") {
   atm.PrintLedger("./prompt.txt", 12345678, 1234);
   REQUIRE(CompareFiles("./ex-1.txt", "./prompt.txt"));
 }
+
+TEST_CASE("Check for an account that already exists") { 
+  Atm atm; 
+  atm.RegisterAccount(11111111, 1234, "Alice", 500.0);
+  REQUIRE_THROWS_AS(
+      atm.RegisterAccount(11111111, 1234, "Alice Duplicate", 1000.0),
+      std::invalid_argument);
+  double balance = atm.CheckBalance(11111111, 1234);
+  REQUIRE(balance == 500.0);
+  auto accounts = atm.GetAccounts();
+  REQUIRE(accounts.size() == 1);
+}
+
+TEST_CASE("withdrawing a negative amount of cash") { 
+  Atm atm; 
+  atm.RegisterAccount()
+}
