@@ -1,15 +1,22 @@
-1. Your test suite properly identified the correct solution!
+Your test suite did not compile!
 
-2. Your test suite did not perform as expected.
-HINT: What should happen if we register an account that already exists?
+tests/tests.cc:92:23: error: too few arguments to function call, expected 4, have 0
+   92 |   atm.RegisterAccount()
+      |   ~~~~~~~~~~~~~~~~~~~ ^
+includes/atm.hpp:16:8: note: 'RegisterAccount' declared here
+   16 |   void RegisterAccount(unsigned int card_num,
+      |        ^               ~~~~~~~~~~~~~~~~~~~~~~
+   17 |                        unsigned int pin,
+      |                        ~~~~~~~~~~~~~~~~~
+   18 |                        const std::string& owner_name,
+      |                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   19 |                        double balance);
+      |                        ~~~~~~~~~~~~~~
+tests/tests.cc:92:24: error: expected ';' after expression
+   92 |   atm.RegisterAccount()
+      |                        ^
+      |                        ;
+2 errors generated.
 
-3. Your test suite did not perform as expected.
-HINT: Try withdrawing a negative amount of cash.
 
-4. Your test suite did not perform as expected.
-HINT: Does the account's balance appear as expected after we make a deposit?
-
-5. Your test suite did not perform as expected.
-HINT: Should we be printing a ledger for an account that doesn't exist?
-
-score: 1/5
+score: 0/5
